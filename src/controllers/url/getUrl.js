@@ -1,33 +1,38 @@
 const { urlRepository } = require( '../../repository' );
-const getIdFromShortUrl = require('../../utils/getIdFromShortUrl');
+const { decodeIdFromUrl } = require( '../../utils' );
 
 const getUrl = async ( req, res ) => {
 
-    const { url } = req.params;
+    const { shortUrl } = req.params;
 
-    const id = getIdFromShortUrl( url );
+    const id = decodeIdFromUrl( shortUrl );
 
-    let longUrl;
+    let url;
 
     try {
-        longUrl = await urlRepository.getLongUrlById( id );
+
+        url = await urlRepository.getUrlById( id );
 
     } catch ( error ) {
+
         res.status( 500 );
         res.send({ error: error.message });
         return;
-    };
 
-    if( !longUrl ) {
+    }
+
+    if( !url ) {
         res.status( 404 );
-        res.send({ error: 'url not found' });
+        res.send({ error: 'URL not found' });
+        return;
     }
 
     res.status( 200 );
     res.send({
         message: 'ok',
-        data: { longUrl },
+        data: { url },
     });
+
 };
 
 module.exports = getUrl;

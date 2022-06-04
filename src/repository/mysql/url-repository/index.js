@@ -1,9 +1,9 @@
-const getUrlByLongUrl = require( './getUrlByLongUrl' );
+const getUrlById = require( './getUrlById' );
 const saveUrl = require( './saveUrl' );
-const getLongUrlById = require( './getLongUrlById' );
+const getIdByUrl = require( './getIdByUrl' );
 
 module.exports = {
-    getUrlByLongUrl,
-    getLongUrlById,
+    getUrlById,
     saveUrl,
+    getIdByUrl,
 };

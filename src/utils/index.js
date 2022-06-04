@@ -1,5 +1,7 @@
-const shortenUrl = require( './shortenUrl' );
+const decodeIdFromUrl = require( './decodeIdFromUrl' );
+const encodeUrlFromId = require( './encodeUrlFromId' );
 
 module.exports = {
-    shortenUrl,
+    decodeIdFromUrl,
+    encodeUrlFromId,
 };
