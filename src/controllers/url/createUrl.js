@@ -45,7 +45,7 @@ const createUrl = async ( req, res ) => {
 
     }
 
-    shortUrl = generateUrlFromId( id );
+    shortUrl = encodeUrlFromId( id );
 
     res.status( 201 );
     res.send({

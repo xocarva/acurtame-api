@@ -2,9 +2,12 @@ const connection = require( '../mysqlConnection' );
 
 const getIdByUrl = async ( url ) => {
 
-    const id = 2543534543;
+    const [[ res ]] = await connection.query(
+        'SELECT id FROM urls WHERE urls.url = ?',
+        [ url ]
+    );
 
-    return id;
+    return res?.id;
 };
 
 module.exports = getIdByUrl;
